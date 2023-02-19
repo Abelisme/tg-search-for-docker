@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.tgchannel.mappers.RegisterMapper">
+<!--     <parameterMap id="Register" type="com.nft.web.webwithnft.model.Register" /> -->
+<!--     <select id="getRegister" resultType="com.nft.web.webwithnft.model.Register"> -->
+<!--         SELECT -->
+<!--         * -->
+<!--         FROM register_address -->
+<!--         limit 1 offset 1 -->
+<!--     </select> -->
+<!--     <insert id="insert" parameterType="com.nft.web.webwithnft.model.Register"> -->
+<!--         INSERT INTO register_address (address)  -->
+<!--         VALUES (#{address}) -->
+<!--     </insert> -->
+</mapper>

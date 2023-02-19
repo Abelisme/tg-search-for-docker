@@ -1,0 +1,28 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+#  thymeleaf:
+#    cache: false
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    encoding: UTF-8
+#    mode: HTML
+  datasource:
+    url: jdbc:postgresql://localhost:5432/{your-table-name}?useSSL=false
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
+#  profiles:
+#    active: dev, fast
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#  servlet:
+#    multipart:
+#      max-file-size: -1
+#      max-request-size: -1
+server:
+  port: 8080
+mybatis:
+  typeAliasesPackage: com.will.tgchannel.mappers
+  mapper-locations: classpath:mappers/*.xml

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.will.tgchannel.mappers.TgChannelMapper">
+	<resultMap id="TgChannelResultMap" type="com.will.tgchannel.model.TgChannel">
+		<id property="id" column="user_id" />
+		<result property="channelName" column="channel_name"/>
+		<result property="fromName" column="from_name"/>
+		<result property="messageSendDate" column="message_send_date"/>
+		<result property="message" column="message"/>
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, channel_name, from_name, message_send_date, message
+	</sql>
+    <insert id="insert" parameterType="com.will.tgchannel.model.TgChannel">
+        INSERT INTO tg_channel (id, channel_name, from_name, message_send_date, message) 
+        VALUES (#{id}, #{channel_name}, #{from_name}, #{message_send_date}, #{message})
+    </insert>
+<!--     <insert id="insertTgChannelList" parameterType="java.util.List"> -->
+<!-- 		INSERT ALL -->
+<!-- 		<foreach collection="list" item="element" index="index"> -->
+<!-- 			INTO tg_channel (id, channel_name, from_name, message_send_date, message)  -->
+<!-- 			values (#{element.id}, #{element.channelName}, #{element.fromName}, #{element.messageSendDate}, #{element.message}) -->
+<!-- 		</foreach> -->
+<!-- 		SELECT * FROM dual -->
+<!-- 	</insert> -->
+	<insert id="insertTgChannelList" parameterType="java.util.List">
+		INSERT INTO tg_channel(id, channel_name, from_name, message_send_date, message) 
+		VALUES 
+		<foreach collection="list" separator="," item="element" index="index">
+			(#{element.id}, #{element.channelName}, #{element.fromName}, #{element.messageSendDate}, #{element.message})
+		</foreach>
+<!-- 		SELECT * FROM dual -->
+	</insert>
+   <insert id="saveTgChannelList">
+        INSERT INTO tg_channel(id, channel_name, from_name, message_send_date, message) 
+        VALUES
+        <foreach collection="list" separator="," item="element">
+            (#{element.id}, #{element.channelName}, #{element.fromName}, #{element.messageSendDate}, #{element.message})
+        </foreach>
+    </insert>
+    <select id="queryTgChannelListByKeyWord" parameterType="java.lang.String" resultMap="TgChannelResultMap">
+    	SELECT 
+    	<include refid="Base_Column_List" />
+    	FROM tg_channel 
+    	WHERE message like CONCAT('%', #{message, jdbcType=VARCHAR}, '%')
+    </select>
+</mapper>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.6</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.will.tgchannel</groupId>
+	<artifactId>tg-channel-search</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>tg-channel-search</name>
+	<description>Spring boot with tgapibot</description>
+	<properties>
+		<java.version>11</java.version>
+
+		<!--		<druid.version>1.1.2</druid.version>-->
+		<postgresql.version>42.4.2</postgresql.version>
+		<!--		<mybatis-plus-boot-starter.version>2.2.0</mybatis-plus-boot-starter.version>-->
+		<!--		<pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>-->
+		<!--		<slf4j.version>1.7.25</slf4j.version>-->
+		<logback.version>1.2.2</logback.version>
+	</properties>
+	<dependencies>
+		<!--	支持全栈式Web开发，包括Tomcat和spring-webmvc。（controller层@RequestMapper等注解需要用到）-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Spring boot end-->
+		<!--Db begin-->
+		<!--		<dependency>-->
+		<!--			<groupId>com.alibaba</groupId>-->
+		<!--			<artifactId>druid</artifactId>-->
+		<!--			<version>${druid.version}</version>-->
+		<!--		</dependency>-->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>com.github.pagehelper</groupId>-->
+		<!--			<artifactId>pagehelper-spring-boot-starter</artifactId>-->
+		<!--			<version>${pagehelper-spring-boot-starter.version}</version>-->
+		<!--		</dependency>-->
+		<!--Db end-->
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- LiveReload server  -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz 排程 -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<!-- tg bots api-->
+		<dependency>
+			<groupId>org.telegram</groupId>
+			<artifactId>telegrambots</artifactId>
+			<version>6.1.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.15.2</version>
+		</dependency>
+<!--		activemq-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-activemq</artifactId>
+		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.activemq</groupId>-->
+<!--			<artifactId>activemq-broker</artifactId>-->
+<!--		</dependency>-->
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+        	</plugin>
+		</plugins>
+		<!--		<resources>-->
+		<!--			<resource>-->
+		<!--				<directory>src/main/java</directory>-->
+		<!-- 打包時排除JRebel插件生成的組態檔 -->
+		<!--				<excludes>-->
+		<!--					<exclude>**/rebel.xml</exclude>-->
+		<!--				</excludes>-->
+		<!--			</resource>-->
+		<!-- 打包所有resources下的檔案 -->
+		<!--			<resource>-->
+		<!--				<directory>src/main/resources</directory>-->
+		<!--				<includes>-->
+		<!--					<include>**/mappers/*.xml</include>-->
+		<!--				</includes>-->
+		<!--			</resource>-->
+		<!--		</resources>-->
+	</build>
+
+</project>
